@@ -137,13 +137,13 @@ export default function ProcessAndAwards() {
   return (
     <>
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500;600&display=swap');
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
         /* ══ Shared ══════════════════════════════════════════ */
         .section-root {
-          background: #0e0e10;
-          font-family: 'DM Sans', sans-serif;
+          background: var(--bg);
+          font-family: var(--font-sans);
+          color: var(--fg);
         }
 
         /* ══ Process ═════════════════════════════════════════ */
@@ -156,17 +156,17 @@ export default function ProcessAndAwards() {
           margin-bottom: 52px;
         }
         .process-heading {
-          font-family: 'Syne', sans-serif;
+          font-family: var(--font-display);
           font-size: clamp(2.2rem, 4vw, 3.4rem);
           font-weight: 800;
-          color: #f0f0f0;
+          color: var(--fg);
           line-height: 1.1;
           letter-spacing: -0.03em;
           margin-bottom: 14px;
         }
         .process-desc {
           font-size: 0.9rem;
-          color: rgba(255,255,255,0.38);
+          color: var(--muted);
           max-width: 480px;
           line-height: 1.7;
         }
@@ -178,8 +178,8 @@ export default function ProcessAndAwards() {
           gap: 14px;
         }
         .step-card {
-          background: #141416;
-          border: 1px solid rgba(255,255,255,0.07);
+          background: var(--accent);
+          border: 1px solid rgba(16,24,40,0.04);
           border-radius: 18px;
           padding: 28px 22px 30px;
           display: flex;
@@ -193,32 +193,32 @@ export default function ProcessAndAwards() {
           width: 44px;
           height: 44px;
           border-radius: 12px;
-          background: rgba(255,255,255,0.05);
-          border: 1px solid rgba(255,255,255,0.08);
+          background: rgba(16,24,40,0.04);
+          border: 1px solid rgba(16,24,40,0.04);
           display: flex;
           align-items: center;
           justify-content: center;
-          color: rgba(255,255,255,0.6);
+          color: var(--muted);
           flex-shrink: 0;
         }
         .step-num {
-          font-family: 'Syne', sans-serif;
+          font-family: var(--font-display);
           font-size: 0.78rem;
           font-weight: 800;
-          color: rgba(255,255,255,0.22);
+          color: rgba(16,24,40,0.06);
           letter-spacing: 0.06em;
         }
         .step-title {
-          font-family: 'Syne', sans-serif;
+          font-family: var(--font-display);
           font-size: 1.1rem;
           font-weight: 700;
-          color: #a3e635;
+          color: var(--highlight);
           letter-spacing: -0.01em;
           line-height: 1.2;
         }
         .step-desc {
           font-size: 0.845rem;
-          color: rgba(255,255,255,0.42);
+          color: var(--muted);
           line-height: 1.7;
           font-weight: 400;
         }
@@ -232,17 +232,17 @@ export default function ProcessAndAwards() {
           grid-template-columns: 320px 1fr;
           gap: 80px;
           align-items: start;
-          border-top: 1px solid rgba(255,255,255,0.05);
+          border-top: 1px solid rgba(16,24,40,0.04);
         }
         .awards-left {
           position: sticky;
           top: 120px;
         }
         .awards-heading {
-          font-family: 'Syne', sans-serif;
+          font-family: var(--font-display);
           font-size: clamp(2.8rem, 4vw, 3.8rem);
           font-weight: 800;
-          color: #f0f0f0;
+          color: var(--fg);
           line-height: 1.08;
           letter-spacing: -0.035em;
         }
@@ -258,17 +258,17 @@ export default function ProcessAndAwards() {
           align-items: center;
           gap: 20px;
           padding: 22px 0;
-          border-bottom: 1px solid rgba(255,255,255,0.06);
+          border-bottom: 1px solid rgba(16,24,40,0.04);
           cursor: default;
           transition: padding-left 0.2s ease;
         }
         .award-row:first-child {
-          border-top: 1px solid rgba(255,255,255,0.06);
+          border-top: 1px solid rgba(16,24,40,0.04);
         }
         .award-title {
           font-size: 0.975rem;
           font-weight: 600;
-          color: #f0f0f0;
+          color: var(--fg);
           white-space: nowrap;
           flex-shrink: 0;
         }
@@ -288,7 +288,7 @@ export default function ProcessAndAwards() {
           font-size: 0.78rem;
           font-weight: 600;
           letter-spacing: 0.1em;
-          color: rgba(255,255,255,0.3);
+          color: var(--muted);
           white-space: nowrap;
           flex-shrink: 0;
           font-variant-numeric: tabular-nums;

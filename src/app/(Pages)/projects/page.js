@@ -124,13 +124,12 @@ export default function ProjectsPage() {
   return (
     <>
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500;600&display=swap');
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
         .projects-root {
-          background: #0e0e10;
+          background: var(--bg);
           min-height: 100vh;
-          font-family: 'DM Sans', sans-serif;
+          font-family: var(--font-sans);
           padding: 110px 48px 120px;
         }
 
@@ -148,16 +147,16 @@ export default function ProjectsPage() {
           font-weight: 700;
           letter-spacing: 0.18em;
           text-transform: uppercase;
-          color: #a3e635;
+          color: var(--highlight);
           margin-bottom: 16px;
           font-family: 'DM Sans', sans-serif;
         }
 
         .projects-heading {
-          font-family: 'Syne', sans-serif;
+          font-family: var(--font-display);
           font-size: clamp(2.2rem, 4.5vw, 3.8rem);
           font-weight: 800;
-          color: #f0f0f0;
+          color: var(--fg);
           line-height: 1.1;
           letter-spacing: -0.035em;
           max-width: 620px;
@@ -179,8 +178,8 @@ export default function ProjectsPage() {
           border-radius: 999px;
           border: 1px solid rgba(255,255,255,0.1);
           background: transparent;
-          color: rgba(255,255,255,0.45);
-          font-family: 'DM Sans', sans-serif;
+          color: var(--muted);
+          font-family: var(--font-sans);
           font-size: 0.85rem;
           font-weight: 500;
           cursor: pointer;
@@ -192,13 +191,13 @@ export default function ProjectsPage() {
           border-color: rgba(255,255,255,0.2);
         }
         .filter-btn.active {
-          color: #0e0e10;
+          color: var(--bg);
           border-color: transparent;
         }
         .filter-pill-bg {
           position: absolute;
           inset: 0;
-          background: #f0f0f0;
+          background: var(--accent);
           border-radius: 999px;
           z-index: 0;
         }
@@ -226,11 +225,11 @@ export default function ProjectsPage() {
           text-decoration: none;
           border-radius: 18px;
           overflow: hidden;
-          background: #141416;
-          border: 1px solid rgba(255,255,255,0.06);
+          background: var(--accent);
+          border: 1px solid rgba(16,24,40,0.04);
           transition: border-color 0.3s;
         }
-        .p-card:hover { border-color: rgba(255,255,255,0.14); }
+        .p-card:hover { border-color: rgba(16,24,40,0.08); }
 
         .p-img-wrap {
           position: relative;
@@ -271,11 +270,11 @@ export default function ProjectsPage() {
           width: 48px;
           height: 48px;
           border-radius: 50%;
-          background: #f0f0f0;
+          background: var(--accent);
           display: flex;
           align-items: center;
           justify-content: center;
-          color: #111;
+          color: var(--fg);
           transform: scale(0.8);
           transition: transform 0.3s ease;
         }
@@ -294,20 +293,20 @@ export default function ProjectsPage() {
           gap: 4px;
         }
         .p-title {
-          font-family: 'Syne', sans-serif;
+          font-family: var(--font-display);
           font-size: 1rem;
           font-weight: 700;
-          color: #f0f0f0;
+          color: var(--fg);
           letter-spacing: -0.01em;
         }
         .p-cat {
           font-size: 0.78rem;
-          color: rgba(255,255,255,0.36);
+          color: var(--muted);
           font-weight: 400;
         }
         .p-year {
           font-size: 0.78rem;
-          color: rgba(255,255,255,0.28);
+          color: var(--muted);
           flex-shrink: 0;
           font-variant-numeric: tabular-nums;
           font-weight: 500;

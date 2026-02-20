@@ -110,14 +110,14 @@ export default function ContactPage() {
   return (
     <>
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500;600&display=swap');
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
         .contact-root {
-          background: #0e0e10;
+          background: var(--bg);
           min-height: 100vh;
-          font-family: 'DM Sans', sans-serif;
+          font-family: var(--font-sans);
           padding-top: 110px;
+          color: var(--fg);
         }
 
         /* ── Eyebrow ── */
@@ -129,9 +129,9 @@ export default function ContactPage() {
           font-weight: 700;
           letter-spacing: 0.18em;
           text-transform: uppercase;
-          color: #a3e635;
+          color: var(--highlight);
           margin-bottom: 18px;
-          font-family: 'DM Sans', sans-serif;
+          font-family: var(--font-sans);
         }
 
         /* ══ CONTACT SECTION ══════════════════════════════════ */
@@ -142,10 +142,10 @@ export default function ContactPage() {
         }
 
         .contact-heading {
-          font-family: 'Syne', sans-serif;
+          font-family: var(--font-display);
           font-size: clamp(2.4rem, 4.5vw, 3.6rem);
           font-weight: 800;
-          color: #f0f0f0;
+          color: var(--fg);
           line-height: 1.1;
           letter-spacing: -0.035em;
           margin-bottom: 48px;
@@ -174,28 +174,28 @@ export default function ContactPage() {
         .field-label {
           font-size: 0.82rem;
           font-weight: 500;
-          color: rgba(255,255,255,0.5);
+          color: var(--muted);
           letter-spacing: 0.01em;
         }
         .field-input,
         .field-textarea {
           width: 100%;
-          background: #141416;
-          border: 1px solid rgba(255,255,255,0.09);
+          background: var(--accent);
+          border: 1px solid rgba(16,24,40,0.04);
           border-radius: 10px;
           padding: 13px 16px;
-          font-family: 'DM Sans', sans-serif;
+          font-family: var(--font-sans);
           font-size: 0.9rem;
-          color: #f0f0f0;
+          color: var(--fg);
           outline: none;
           transition: border-color 0.25s, box-shadow 0.25s;
           resize: none;
         }
         .field-input::placeholder,
-        .field-textarea::placeholder { color: rgba(255,255,255,0.2); }
+        .field-textarea::placeholder { color: var(--muted); opacity: 0.5; }
         .field-input.focused,
         .field-textarea.focused {
-          border-color: rgba(163,230,53,0.5);
+          border-color: var(--highlight);
           box-shadow: 0 0 0 3px rgba(163,230,53,0.08);
         }
         .field-textarea { min-height: 140px; line-height: 1.65; }
@@ -206,10 +206,10 @@ export default function ContactPage() {
           gap: 10px;
           padding: 13px 30px;
           border-radius: 999px;
-          border: 1.5px solid rgba(255,255,255,0.2);
+          border: 1.5px solid rgba(16,24,40,0.04);
           background: transparent;
-          color: #f0f0f0;
-          font-family: 'DM Sans', sans-serif;
+          color: var(--fg);
+          font-family: var(--font-sans);
           font-size: 0.9rem;
           font-weight: 600;
           cursor: pointer;
@@ -219,9 +219,9 @@ export default function ContactPage() {
           overflow: hidden;
         }
         .submit-btn:hover {
-          border-color: #a3e635;
+          border-color: var(--highlight);
           background: rgba(163,230,53,0.08);
-          color: #a3e635;
+          color: var(--highlight);
           box-shadow: 0 0 24px rgba(163,230,53,0.15);
         }
         .sent-msg {
@@ -229,14 +229,14 @@ export default function ContactPage() {
           align-items: center;
           gap: 8px;
           font-size: 0.875rem;
-          color: #a3e635;
+          color: var(--highlight);
           font-weight: 600;
         }
 
         /* ── Profile card ── */
         .profile-card {
-          background: #141416;
-          border: 1px solid rgba(255,255,255,0.08);
+          background: var(--accent);
+          border: 1px solid rgba(16,24,40,0.04);
           border-radius: 20px;
           padding: 28px;
           display: flex;
@@ -255,15 +255,15 @@ export default function ContactPage() {
           padding: 5px 12px;
           font-size: 0.75rem;
           font-weight: 600;
-          color: #a3e635;
+          color: var(--highlight);
           width: fit-content;
         }
         .avail-dot {
           width: 7px;
           height: 7px;
           border-radius: 50%;
-          background: #a3e635;
-          box-shadow: 0 0 6px #a3e635;
+          background: var(--highlight);
+          box-shadow: 0 0 6px var(--highlight);
           animation: pulse 2s ease-in-out infinite;
           flex-shrink: 0;
         }
@@ -274,8 +274,8 @@ export default function ContactPage() {
           height: 60px;
           border-radius: 50%;
           overflow: hidden;
-          border: 2px solid rgba(255,255,255,0.1);
-          background: #222;
+          border: 2px solid rgba(16,24,40,0.04);
+          background: rgba(16,24,40,0.08);
           flex-shrink: 0;
         }
         .profile-avatar img {
@@ -286,7 +286,7 @@ export default function ContactPage() {
         }
         .profile-bio {
           font-size: 0.855rem;
-          color: rgba(255,255,255,0.45);
+          color: var(--muted);
           line-height: 1.72;
         }
         .profile-socials {
@@ -298,9 +298,9 @@ export default function ContactPage() {
           width: 36px;
           height: 36px;
           border-radius: 9px;
-          border: 1px solid rgba(255,255,255,0.08);
+          border: 1px solid rgba(16,24,40,0.04);
           background: transparent;
-          color: rgba(255,255,255,0.4);
+          color: var(--muted);
           display: flex;
           align-items: center;
           justify-content: center;
@@ -308,9 +308,9 @@ export default function ContactPage() {
           transition: color 0.2s, border-color 0.2s, background 0.2s;
         }
         .psocial-btn:hover {
-          color: #f0f0f0;
-          border-color: rgba(255,255,255,0.2);
-          background: rgba(255,255,255,0.05);
+          color: var(--fg);
+          border-color: rgba(16,24,40,0.04);
+          background: rgba(16,24,40,0.04);
         }
 
         /* ══ FAQ SECTION ══════════════════════════════════════ */
@@ -322,7 +322,7 @@ export default function ContactPage() {
           grid-template-columns: 280px 1fr;
           gap: 72px;
           align-items: start;
-          border-top: 1px solid rgba(255,255,255,0.05);
+          border-top: 1px solid rgba(16,24,40,0.04);
           padding-top: 80px;
         }
 
@@ -331,10 +331,10 @@ export default function ContactPage() {
           top: 120px;
         }
         .faq-heading {
-          font-family: 'Syne', sans-serif;
+          font-family: var(--font-display);
           font-size: clamp(2.6rem, 4vw, 3.6rem);
           font-weight: 800;
-          color: #f0f0f0;
+          color: var(--fg);
           line-height: 1.08;
           letter-spacing: -0.04em;
         }
@@ -346,15 +346,15 @@ export default function ContactPage() {
         }
 
         .faq-item {
-          border-bottom: 1px solid rgba(255,255,255,0.07);
+          border-bottom: 1px solid rgba(16,24,40,0.04);
           cursor: pointer;
           transition: background 0.2s;
           border-radius: 12px;
           padding: 4px 0;
         }
-        .faq-item:first-child { border-top: 1px solid rgba(255,255,255,0.07); }
-        .faq-item:hover { background: rgba(255,255,255,0.02); }
-        .faq-open { background: rgba(255,255,255,0.02); }
+        .faq-item:first-child { border-top: 1px solid rgba(16,24,40,0.04); }
+        .faq-item:hover { background: rgba(16,24,40,0.02); }
+        .faq-open { background: rgba(16,24,40,0.02); }
 
         .faq-header {
           display: flex;
@@ -372,7 +372,8 @@ export default function ContactPage() {
         .faq-num {
           font-size: 0.75rem;
           font-weight: 600;
-          color: rgba(255,255,255,0.25);
+          color: var(--muted);
+          opacity: 0.5;
           font-variant-numeric: tabular-nums;
           letter-spacing: 0.06em;
           flex-shrink: 0;
@@ -381,20 +382,20 @@ export default function ContactPage() {
         .faq-q {
           font-size: 0.92rem;
           font-weight: 600;
-          color: rgba(255,255,255,0.78);
+          color: var(--muted);
           line-height: 1.4;
         }
-        .faq-open .faq-q { color: #f0f0f0; }
+        .faq-open .faq-q { color: var(--fg); }
         .faq-chevron {
-          color: rgba(255,255,255,0.3);
+          color: var(--muted);
           flex-shrink: 0;
           display: flex;
           align-items: center;
         }
-        .faq-open .faq-chevron { color: #a3e635; }
+        .faq-open .faq-chevron { color: var(--highlight); }
         .faq-a {
           font-size: 0.875rem;
-          color: rgba(255,255,255,0.42);
+          color: var(--muted);
           line-height: 1.75;
           padding: 0 16px 18px 54px;
         }

@@ -3,6 +3,7 @@
 import { useRef, useState, useEffect } from "react";
 import { motion, useInView, useScroll, useSpring, useTransform, useMotionValue, useMotionValueEvent, AnimatePresence } from "framer-motion";
 import Link from "next/link";
+import WorkHistory from "../components/WorkHistory";
 
 
 const MARQUEE_ITEMS = ["Websites", "Designing", "Graphics", "Animations", "Community", "Development", "Mentor"];
@@ -61,7 +62,7 @@ const SOCIALS = [
 ═══════════════════════════════════════════════════════════════ */
 function Eyebrow({ children, center = false }) {
   return (
-    <div style={{ display:"flex", alignItems:"center", justifyContent: center?"center":"flex-start", gap:8, fontSize:"0.7rem", fontWeight:700, letterSpacing:"0.18em", textTransform:"uppercase", color:"#a3e635", marginBottom:16, fontFamily:"'DM Sans',sans-serif" }}>
+    <div style={{ display:"flex", alignItems:"center", justifyContent: center?"center":"flex-start", gap:8, fontSize:"0.7rem", fontWeight:700, letterSpacing:"0.18em", textTransform:"uppercase", color:"var(--highlight)", marginBottom:16, fontFamily:"var(--font-sans)" }}>
       <svg width="12" height="12" viewBox="0 0 14 14" fill="none"><path d="M7 0L8.2 5.8L14 7L8.2 8.2L7 14L5.8 8.2L0 7L5.8 5.8Z" fill="#a3e635"/></svg>
       {children}
     </div>
@@ -88,7 +89,7 @@ function Hero() {
   return (
     <section className="hero-section">
       <div className="container" style={{ paddingTop:160, paddingBottom:100 }}>
-        <motion.div initial={{opacity:0,y:10}} animate={{opacity:1,y:0}} transition={{duration:0.5}} style={{ display:"flex",alignItems:"center",gap:8,marginBottom:24,fontSize:"0.85rem",color:"rgba(255,255,255,0.5)",fontFamily:"'DM Sans',sans-serif" }}>
+        <motion.div initial={{opacity:0,y:10}} animate={{opacity:1,y:0}} transition={{duration:0.5}} style={{ display:"flex",alignItems:"center",gap:8,marginBottom:24,fontSize:"0.85rem",color:"var(--muted)",fontFamily:"var(--font-sans)" }}>
           <span>👋</span> Hey! It's me Devraj,
         </motion.div>
 
@@ -98,8 +99,8 @@ function Hero() {
             { text:"purpose driven", delay:0.2, accent:true },
             { text:" experiences that inspire & engage.", delay:0.35 },
           ].map(({text,delay,accent},i)=>(
-            <motion.span key={i} initial={{y:80,opacity:0}} animate={{y:0,opacity:1}} transition={{duration:0.85,delay,ease:[0.16,1,0.3,1]}}
-              style={{ display:"inline", color: accent?"#a3e635":"#f0f0f0" }}>
+              <motion.span key={i} initial={{y:80,opacity:0}} animate={{y:0,opacity:1}} transition={{duration:0.85,delay,ease:[0.16,1,0.3,1]}}
+              style={{ display:"inline", color: accent?"var(--highlight)":"var(--fg)" }}>
               {text}
             </motion.span>
           ))}
@@ -134,15 +135,15 @@ function Hero() {
 function MarqueeStrip() {
   const doubled = [...MARQUEE_ITEMS,...MARQUEE_ITEMS,...MARQUEE_ITEMS];
   return (
-    <div style={{ overflow:"hidden", borderTop:"1px solid rgba(255,255,255,0.06)", borderBottom:"1px solid rgba(255,255,255,0.06)", padding:"20px 0", background:"#0e0e10", position:"relative" }}>
-      <div style={{ position:"absolute",left:0,top:0,bottom:0,width:80,background:"linear-gradient(to right,#0e0e10,transparent)",zIndex:2,pointerEvents:"none" }}/>
-      <div style={{ position:"absolute",right:0,top:0,bottom:0,width:80,background:"linear-gradient(to left,#0e0e10,transparent)",zIndex:2,pointerEvents:"none" }}/>
+    <div style={{ overflow:"hidden", borderTop:"1px solid rgba(0,0,0,0.06)", borderBottom:"1px solid rgba(0,0,0,0.06)", padding:"20px 0", background:"var(--bg)", position:"relative" }}>
+      <div style={{ position:"absolute",left:0,top:0,bottom:0,width:80,background:"linear-gradient(to right,var(--bg),transparent)",zIndex:2,pointerEvents:"none" }}/>
+      <div style={{ position:"absolute",right:0,top:0,bottom:0,width:80,background:"linear-gradient(to left,var(--bg),transparent)",zIndex:2,pointerEvents:"none" }}/>
       <motion.div animate={{x:["0%","-33.33%"]}} transition={{duration:20,repeat:Infinity,ease:"linear"}}
         style={{ display:"inline-flex",gap:48,whiteSpace:"nowrap" }}>
         {doubled.map((item,i)=>(
-          <span key={i} style={{ display:"inline-flex",alignItems:"center",gap:16,fontSize:"clamp(1rem,2vw,1.3rem)",fontWeight:700,fontFamily:"'Syne',sans-serif",color:"rgba(255,255,255,0.18)",letterSpacing:"-0.01em",flexShrink:0 }}>
+          <span key={i} style={{ display:"inline-flex",alignItems:"center",gap:16,fontSize:"clamp(1rem,2vw,1.3rem)",fontWeight:700,fontFamily:"var(--font-display)",color:"var(--muted)",letterSpacing:"-0.01em",flexShrink:0 }}>
             {item}
-            <span style={{ color:"#a3e635",fontSize:"0.9em" }}>✦</span>
+            <span style={{ color:"var(--highlight)",fontSize:"0.9em" }}>✦</span>
           </span>
         ))}
       </motion.div>
@@ -159,16 +160,16 @@ function AboutBlurb() {
   const text = "I'm Devraj Chatribin, with over 5+ years of experience in design & development with strong focus on producing high quality & impactful digital experiences. I have worked with some of the most innovative industry leaders to help build their top-notch products.";
   const words = text.split(" ");
   return (
-    <section ref={ref} style={{ background:"#0e0e10", padding:"120px 48px" }}>
+    <section ref={ref} style={{ background:"var(--bg)", padding:"120px 48px" }}>
       <div className="container" style={{ maxWidth:800, margin:"0 auto", textAlign:"center" }}>
         <motion.div initial={{opacity:0,y:12}} animate={inView?{opacity:1,y:0}:{}} transition={{duration:0.5}}>
           <Eyebrow center>About Me</Eyebrow>
         </motion.div>
-        <p style={{ fontFamily:"'Syne',sans-serif", fontSize:"clamp(1.2rem,2.5vw,1.65rem)", fontWeight:700, lineHeight:1.6, letterSpacing:"-0.02em", color:"transparent" }}>
+        <p style={{ fontFamily:"var(--font-display)", fontSize:"clamp(1.2rem,2.5vw,1.65rem)", fontWeight:700, lineHeight:1.6, letterSpacing:"-0.02em", color:"transparent" }}>
           {words.map((word,i)=>(
             <motion.span key={i}
-              initial={{color:"rgba(255,255,255,0.12)"}}
-              animate={inView?{color:"rgba(255,255,255,0.85)"}:{}}
+              initial={{color:"var(--muted)"}}
+              animate={inView?{color:"var(--fg)"}:{}}
               transition={{duration:0.4, delay: i*0.03}}
               style={{ display:"inline" }}
             >{word}{" "}</motion.span>
@@ -184,12 +185,12 @@ function AboutBlurb() {
 ═══════════════════════════════════════════════════════════════ */
 function Projects() {
   return (
-    <section style={{ background:"#0e0e10", padding:"0 48px 100px" }}>
+    <section style={{ background:"var(--bg)", padding:"0 48px 100px" }}>
       <div className="container">
         <FadeUp>
           <Eyebrow>My Work</Eyebrow>
           <h2 className="section-heading">Selected Projects</h2>
-          <p style={{ fontSize:"0.875rem", color:"rgba(255,255,255,0.35)", marginBottom:52, fontFamily:"'DM Sans',sans-serif" }}>Here's a curated selection showcasing my expertise and the achieved results.</p>
+          <p style={{ fontSize:"0.875rem", color:"var(--muted)", marginBottom:52, fontFamily:"var(--font-sans)" }}>Here's a curated selection showcasing my expertise and the achieved results.</p>
         </FadeUp>
 
         <div className="projects-grid">
@@ -232,7 +233,7 @@ function Expertise() {
   const active = EXPERTISE.find(e=>e.id===open);
 
   return (
-    <section style={{ background:"#0e0e10", padding:"100px 48px" }}>
+    <section style={{ background:"var(--bg)", padding:"100px 48px" }}>
       <div className="container">
         <FadeUp>
           <Eyebrow>Speciality</Eyebrow>
@@ -252,7 +253,7 @@ function Expertise() {
                 <AnimatePresence>
                   {open===id && (
                     <motion.div initial={{height:0,opacity:0}} animate={{height:"auto",opacity:1}} exit={{height:0,opacity:0}} transition={{duration:0.35,ease:[0.4,0,0.2,1]}} style={{overflow:"hidden"}}>
-                      <p style={{ padding:"12px 0 16px 36px", fontSize:"0.875rem", color:"rgba(255,255,255,0.42)", lineHeight:1.72, fontFamily:"'DM Sans',sans-serif" }}>{desc}</p>
+                      <p style={{ padding:"12px 0 16px 36px", fontSize:"0.875rem", color:"var(--muted)", lineHeight:1.72, fontFamily:"var(--font-sans)" }}>{desc}</p>
                     </motion.div>
                   )}
                 </AnimatePresence>
@@ -261,7 +262,7 @@ function Expertise() {
           </div>
 
           {/* Image */}
-          <div style={{ borderRadius:18, overflow:"hidden", background:"#141416", border:"1px solid rgba(255,255,255,0.07)", height:280, position:"relative" }}>
+          <div style={{ borderRadius:18, overflow:"hidden", background:"var(--accent)", border:"1px solid rgba(16,24,40,0.07)", height:280, position:"relative" }}>
             <AnimatePresence mode="wait">
               <motion.img key={active?.img} src={active?.img} alt={active?.label}
                 initial={{opacity:0,scale:1.04}} animate={{opacity:1,scale:1}} exit={{opacity:0,scale:0.97}}
@@ -275,8 +276,8 @@ function Expertise() {
 
         {/* Tech marquee */}
         <div style={{ marginTop:48, overflow:"hidden", position:"relative" }}>
-          <div style={{ position:"absolute",left:0,top:0,bottom:0,width:60,background:"linear-gradient(to right,#0e0e10,transparent)",zIndex:2,pointerEvents:"none" }}/>
-          <div style={{ position:"absolute",right:0,top:0,bottom:0,width:60,background:"linear-gradient(to left,#0e0e10,transparent)",zIndex:2,pointerEvents:"none" }}/>
+          <div style={{ position:"absolute",left:0,top:0,bottom:0,width:60,background:"linear-gradient(to right,var(--bg),transparent)",zIndex:2,pointerEvents:"none" }}/>
+          <div style={{ position:"absolute",right:0,top:0,bottom:0,width:60,background:"linear-gradient(to left,var(--bg),transparent)",zIndex:2,pointerEvents:"none" }}/>
           <motion.div animate={{x:["0%","-50%"]}} transition={{duration:25,repeat:Infinity,ease:"linear"}} style={{ display:"inline-flex",gap:10,whiteSpace:"nowrap" }}>
             {[...TECH,...TECH].map((t,i)=>(
               <span key={i} style={{ display:"inline-flex",alignItems:"center",gap:8,padding:"8px 16px",border:"1px solid rgba(255,255,255,0.08)",borderRadius:999,background:"rgba(255,255,255,0.03)",fontSize:"0.82rem",fontWeight:500,color:"rgba(255,255,255,0.6)",flexShrink:0,fontFamily:"'DM Sans',sans-serif" }}>
@@ -298,14 +299,14 @@ function Testimonials() {
   const t = TESTIMONIALS[idx];
 
   return (
-    <section style={{ background:"#0e0e10", padding:"100px 48px", borderTop:"1px solid rgba(255,255,255,0.05)" }}>
+    <section style={{ background:"var(--bg)", padding:"100px 48px", borderTop:"1px solid rgba(0,0,0,0.06)" }}>
       <div className="container">
         <div className="testimonials-grid">
           {/* Left */}
           <FadeUp>
             <Eyebrow>Testimonials</Eyebrow>
             <h2 className="section-heading" style={{ marginBottom:14 }}>What others<br/>say</h2>
-            <p style={{ fontSize:"0.875rem",color:"rgba(255,255,255,0.35)",lineHeight:1.7,maxWidth:280,fontFamily:"'DM Sans',sans-serif",marginBottom:28 }}>
+            <p style={{ fontSize:"0.875rem",color:"var(--muted)",lineHeight:1.7,maxWidth:280,fontFamily:"var(--font-sans)",marginBottom:28 }}>
               I've worked with some amazing people over the years, here is what they have to say about me.
             </p>
             <a href="https://linkedin.com/in/devraj-chatribin/" target="_blank" className="hero-social-link" style={{ display:"inline-flex",alignItems:"center",gap:6 }}>
@@ -319,15 +320,15 @@ function Testimonials() {
               <motion.div key={idx} initial={{opacity:0,y:20}} animate={{opacity:1,y:0}} exit={{opacity:0,y:-16}} transition={{duration:0.4}}>
                 <div className="testimonial-card">
                   <div style={{ display:"flex",alignItems:"center",gap:14,marginBottom:20 }}>
-                    <div style={{ width:48,height:48,borderRadius:"50%",overflow:"hidden",background:"#222",flexShrink:0,border:"1px solid rgba(255,255,255,0.1)" }}>
+                    <div style={{ width:48,height:48,borderRadius:"50%",overflow:"hidden",background:"var(--accent)",flexShrink:0,border:"1px solid rgba(16,24,40,0.1)" }}>
                       <img src={t.avatar} alt={t.name} style={{ width:"100%",height:"100%",objectFit:"cover" }} onError={e=>{ e.currentTarget.style.display="none"; }}/>
                     </div>
                     <div>
-                      <div style={{ fontFamily:"'Syne',sans-serif",fontWeight:700,fontSize:"0.95rem",color:"#f0f0f0" }}>{t.name}</div>
-                      <div style={{ fontSize:"0.78rem",color:"rgba(255,255,255,0.4)",fontFamily:"'DM Sans',sans-serif" }}>{t.role}</div>
+                      <div style={{ fontFamily:"var(--font-display)",fontWeight:700,fontSize:"0.95rem",color:"var(--fg)" }}>{t.name}</div>
+                      <div style={{ fontSize:"0.78rem",color:"var(--muted)",fontFamily:"var(--font-sans)" }}>{t.role}</div>
                     </div>
                   </div>
-                  <p style={{ fontSize:"0.9rem",color:"rgba(255,255,255,0.55)",lineHeight:1.76,fontFamily:"'DM Sans',sans-serif" }}>{t.quote}</p>
+                  <p style={{ fontSize:"0.9rem",color:"var(--muted)",lineHeight:1.76,fontFamily:"var(--font-sans)" }}>{t.quote}</p>
                 </div>
               </motion.div>
             </AnimatePresence>
@@ -355,64 +356,61 @@ export default function HomePage() {
   return (
     <>
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500;600&display=swap');
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
         html { scroll-behavior: smooth; }
-        body { background: #0e0e10; color: #f0f0f0; }
+        body { background: var(--bg); color: var(--fg); }
 
         .container { max-width: 1200px; margin: 0 auto; }
 
-     
-
         /* ── Hero ── */
-        .hero-section { background:#0e0e10; padding:0 48px; }
-        .hero-heading { font-family:'Syne',sans-serif; font-size:clamp(2.4rem,5vw,4.2rem); font-weight:800; line-height:1.1; letter-spacing:-0.04em; margin-bottom:48px; }
+        .hero-section { background: transparent; padding: 0 48px; }
+        .hero-heading { font-family: var(--font-display); font-size: clamp(2.4rem,5vw,4.2rem); font-weight: 800; line-height:1.1; letter-spacing: -0.04em; margin-bottom: 48px; color: var(--fg); }
         .hero-bottom { display:grid; grid-template-columns:1fr 1fr; gap:40px; align-items:end; }
         .hero-socials { display:flex; flex-direction:column; gap:10px; }
-        .hero-social-link { display:inline-flex; align-items:center; gap:6px; font-size:0.75rem; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:rgba(255,255,255,0.35); text-decoration:none; transition:color 0.2s; font-family:'DM Sans',sans-serif; }
-        .hero-social-link:hover { color:#f0f0f0; }
-        .hero-body { font-size:0.875rem; line-height:1.72; color:rgba(255,255,255,0.42); text-align:right; font-family:'DM Sans',sans-serif; }
-        .btn-outline { display:inline-flex; align-items:center; gap:8px; padding:12px 26px; border-radius:999px; border:1.5px solid rgba(255,255,255,0.2); background:transparent; color:#f0f0f0; font-family:'DM Sans',sans-serif; font-size:0.875rem; font-weight:600; cursor:pointer; text-decoration:none; transition:border-color 0.25s,background 0.25s,color 0.25s; }
-        .btn-outline:hover { border-color:#a3e635; color:#a3e635; background:rgba(163,230,53,0.06); }
+        .hero-social-link { display:inline-flex; align-items:center; gap:6px; font-size:0.75rem; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:var(--muted); text-decoration:none; transition:color 0.2s; font-family:var(--font-sans); }
+        .hero-social-link:hover { color: var(--fg); }
+        .hero-body { font-size:0.875rem; line-height:1.72; color:var(--muted); text-align:right; font-family:var(--font-sans); }
+        .btn-outline { display:inline-flex; align-items:center; gap:8px; padding:12px 26px; border-radius:999px; border:1.5px solid rgba(16,24,40,0.06); background:transparent; color:var(--fg); font-family:var(--font-sans); font-size:0.875rem; font-weight:600; cursor:pointer; text-decoration:none; transition:border-color 0.25s,background 0.25s,color 0.25s; }
+        .btn-outline:hover { border-color:var(--highlight); color:var(--highlight); background:rgba(163,230,53,0.06); }
 
         /* ── Sections ── */
-        .section-heading { font-family:'Syne',sans-serif; font-size:clamp(1.8rem,3.5vw,2.8rem); font-weight:800; color:#f0f0f0; letter-spacing:-0.03em; line-height:1.1; margin-bottom:12px; }
+        .section-heading { font-family:var(--font-display); font-size:clamp(1.8rem,3.5vw,2.8rem); font-weight:800; color:var(--fg); letter-spacing:-0.03em; line-height:1.1; margin-bottom:12px; }
 
         /* ── Projects ── */
         .projects-grid { display:grid; grid-template-columns:1fr 1fr; gap:24px; }
-        .project-card { display:block; text-decoration:none; border-radius:16px; overflow:hidden; background:var(--card-bg,#141416); border:1px solid rgba(255,255,255,0.06); transition:transform 0.3s ease,border-color 0.3s; }
-        .project-card:hover { transform:translateY(-4px); border-color:rgba(255,255,255,0.14); }
+        .project-card { display:block; text-decoration:none; border-radius:16px; overflow:hidden; background:var(--accent); border:1px solid rgba(16,24,40,0.04); transition:transform 0.3s ease,border-color 0.3s; }
+        .project-card:hover { transform:translateY(-4px); border-color:rgba(16,24,40,0.08); }
         .project-img-wrap { position:relative; aspect-ratio:16/10; overflow:hidden; }
         .project-img { width:100%; height:100%; object-fit:cover; display:block; transition:transform 0.5s ease; }
         .project-card:hover .project-img { transform:scale(1.04); }
-        .project-overlay { position:absolute; inset:0; background:rgba(0,0,0,0.3); opacity:0; display:flex; align-items:center; justify-content:center; transition:opacity 0.3s; }
+        .project-overlay { position:absolute; inset:0; background:rgba(0,0,0,0.08); opacity:0; display:flex; align-items:center; justify-content:center; transition:opacity 0.3s; }
         .project-card:hover .project-overlay { opacity:1; }
-        .project-arrow { width:44px; height:44px; background:#f0f0f0; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:1.1rem; color:#111; }
+        .project-arrow { width:44px; height:44px; background:var(--accent); border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:1.1rem; color:var(--fg); }
         .project-meta { display:flex; align-items:flex-start; justify-content:space-between; padding:16px; }
-        .project-title { font-family:'Syne',sans-serif; font-weight:700; font-size:0.95rem; color:#f0f0f0; }
-        .project-cat { font-size:0.78rem; color:rgba(255,255,255,0.38); font-family:'DM Sans',sans-serif; margin-top:3px; }
-        .project-year { font-size:0.78rem; color:rgba(255,255,255,0.3); font-family:'DM Sans',sans-serif; flex-shrink:0; }
+        .project-title { font-family:var(--font-display); font-weight:700; font-size:0.95rem; color:var(--fg); }
+        .project-cat { font-size:0.78rem; color:var(--muted); font-family:var(--font-sans); margin-top:3px; }
+        .project-year { font-size:0.78rem; color:var(--muted); font-family:var(--font-sans); flex-shrink:0; }
 
         /* ── Expertise ── */
         .expertise-grid { display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:start; margin-top:40px; }
-        .accordion-item { border:1px solid rgba(255,255,255,0.07); border-radius:14px; overflow:hidden; cursor:pointer; background:#141416; transition:border-color 0.25s; margin-bottom:6px; }
-        .accordion-item.open { border-color:rgba(163,230,53,0.25); }
+        .accordion-item { border:1px solid rgba(16,24,40,0.06); border-radius:14px; overflow:hidden; cursor:pointer; background:var(--accent); transition:border-color 0.25s; margin-bottom:6px; }
+        .accordion-item.open { border-color:rgba(37,184,106,0.18); }
         .accordion-header { display:flex; align-items:center; gap:12px; padding:16px 18px; }
-        .acc-icon { font-size:0.85rem; color:#a3e635; width:20px; text-align:center; flex-shrink:0; }
-        .acc-label { font-family:'Syne',sans-serif; font-size:0.95rem; font-weight:700; color:#f0f0f0; flex:1; }
-        .acc-chevron { color:rgba(255,255,255,0.3); font-size:1.1rem; flex-shrink:0; transition:color 0.2s; }
-        .accordion-item.open .acc-chevron { color:#a3e635; }
+        .acc-icon { font-size:0.85rem; color:var(--highlight); width:20px; text-align:center; flex-shrink:0; }
+        .acc-label { font-family:var(--font-display); font-size:0.95rem; font-weight:700; color:var(--fg); flex:1; }
+        .acc-chevron { color:var(--muted); font-size:1.1rem; flex-shrink:0; transition:color 0.2s; }
+        .accordion-item.open .acc-chevron { color:var(--highlight); }
 
         /* ── Testimonials ── */
         .testimonials-grid { display:grid; grid-template-columns:280px 1fr; gap:64px; align-items:start; }
-        .testimonial-card { background:#141416; border:1px solid rgba(255,255,255,0.07); border-radius:18px; padding:28px; }
-        .nav-arrow { width:38px; height:38px; border-radius:10px; border:1px solid rgba(255,255,255,0.1); background:transparent; color:rgba(255,255,255,0.5); font-size:1rem; cursor:pointer; display:flex; align-items:center; justify-content:center; transition:border-color 0.2s,color 0.2s; }
-        .nav-arrow:hover { border-color:rgba(255,255,255,0.25); color:#f0f0f0; }
+        .testimonial-card { background:var(--accent); border:1px solid rgba(16,24,40,0.07); border-radius:18px; padding:28px; }
+        .nav-arrow { width:38px; height:38px; border-radius:10px; border:1px solid rgba(16,24,40,0.1); background:transparent; color:var(--muted); font-size:1rem; cursor:pointer; display:flex; align-items:center; justify-content:center; transition:border-color 0.2s,color 0.2s; }
+        .nav-arrow:hover { border-color:rgba(16,24,40,0.25); color:var(--fg); }
 
         /* ── Footer CTA ── */
-        .footer-card { max-width:1200px; margin:0 auto; background:#161618; border:1px solid rgba(255,255,255,0.08); border-radius:24px; padding:72px 48px 80px; display:flex; flex-direction:column; align-items:center; text-align:center; position:relative; overflow:hidden; }
+        .footer-card { max-width:1200px; margin:0 auto; background:var(--accent); border:1px solid rgba(16,24,40,0.08); border-radius:24px; padding:72px 48px 80px; display:flex; flex-direction:column; align-items:center; text-align:center; position:relative; overflow:hidden; }
         .footer-card::before { content:''; position:absolute; top:-40%; left:50%; transform:translateX(-50%); width:60%; height:220px; border-radius:50%; background:radial-gradient(circle,rgba(163,230,53,0.05) 0%,transparent 70%); pointer-events:none; }
-        .footer-cta-heading { font-family:'Syne',sans-serif; font-size:clamp(2.4rem,5.5vw,4.4rem); font-weight:800; color:#f0f0f0; line-height:1.1; letter-spacing:-0.035em; margin-bottom:36px; }
+        .footer-cta-heading { font-family:var(--font-display); font-size:clamp(2.4rem,5.5vw,4.4rem); font-weight:800; color:var(--fg); line-height:1.1; letter-spacing:-0.035em; margin-bottom:36px; }
         @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.4} }
 
         /* ── Responsive ── */
@@ -438,6 +436,8 @@ export default function HomePage() {
 
       <main>
         <Hero />
+
+        <WorkHistory />
         <MarqueeStrip />
         <AboutBlurb />
         <Projects />

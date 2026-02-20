@@ -164,17 +164,15 @@ export default function ExperienceSection() {
   return (
     <>
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap');
-
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
         /* ── Marquee ───────────────────────────────────────────── */
         .marquee-section {
-          background: #0e0e10;
+          background: var(--bg);
           padding: 0;
           overflow: hidden;
-          border-top: 1px solid rgba(255,255,255,0.06);
-          border-bottom: 1px solid rgba(255,255,255,0.06);
+          border-top: 1px solid rgba(16,24,40,0.04);
+          border-bottom: 1px solid rgba(16,24,40,0.04);
         }
         .marquee-track-wrapper {
           position: relative;
@@ -188,8 +186,8 @@ export default function ExperienceSection() {
           z-index: 2;
           pointer-events: none;
         }
-        .marquee-fade-left  { left: 0;  background: linear-gradient(to right, #0e0e10, transparent); }
-        .marquee-fade-right { right: 0; background: linear-gradient(to left,  #0e0e10, transparent); }
+        .marquee-fade-left  { left: 0;  background: linear-gradient(to right, var(--bg), transparent); }
+        .marquee-fade-right { right: 0; background: linear-gradient(to left,  var(--bg), transparent); }
 
         .marquee-track {
           overflow: hidden;
@@ -207,8 +205,8 @@ export default function ExperienceSection() {
           gap: 9px;
           padding: 9px 18px;
           border-radius: 999px;
-          border: 1px solid rgba(255,255,255,0.1);
-          background: rgba(255,255,255,0.04);
+          border: 1px solid rgba(16,24,40,0.04);
+          background: var(--accent);
           cursor: default;
           transition: border-color 0.25s ease;
           flex-shrink: 0;
@@ -222,24 +220,25 @@ export default function ExperienceSection() {
           justify-content: center;
           font-size: 0.72rem;
           font-weight: 800;
-          font-family: 'Syne', sans-serif;
+          font-family: var(--font-display);
           flex-shrink: 0;
         }
         .tech-name {
-          font-family: 'DM Sans', sans-serif;
+          font-family: var(--font-sans);
           font-size: 0.875rem;
           font-weight: 500;
-          color: rgba(255,255,255,0.75);
+          color: var(--fg);
           white-space: nowrap;
         }
 
         /* ── Experience section ────────────────────────────────── */
         .experience-section {
-          background: #0e0e10;
+          background: var(--bg);
           padding: 100px 48px 120px;
-          font-family: 'DM Sans', sans-serif;
+          font-family: var(--font-sans);
           position: relative;
           overflow: hidden;
+          color: var(--fg);
         }
         /* faint grid lines background */
         .experience-section::before {
@@ -247,8 +246,8 @@ export default function ExperienceSection() {
           position: absolute;
           inset: 0;
           background-image:
-            linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+            linear-gradient(rgba(16,24,40,0.01) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(16,24,40,0.01) 1px, transparent 1px);
           background-size: 60px 60px;
           pointer-events: none;
         }
@@ -277,17 +276,17 @@ export default function ExperienceSection() {
           font-weight: 700;
           letter-spacing: 0.18em;
           text-transform: uppercase;
-          color: #a3e635;
+          color: var(--highlight);
           margin-bottom: 18px;
         }
         .exp-eyebrow svg {
           flex-shrink: 0;
         }
         .exp-heading {
-          font-family: 'Syne', sans-serif;
+          font-family: var(--font-display);
           font-size: clamp(2.8rem, 4vw, 3.6rem);
           font-weight: 800;
-          color: #f0f0f0;
+          color: var(--fg);
           line-height: 1.08;
           letter-spacing: -0.03em;
           margin-bottom: 22px;
@@ -295,7 +294,7 @@ export default function ExperienceSection() {
         .exp-desc {
           font-size: 0.925rem;
           line-height: 1.75;
-          color: rgba(255,255,255,0.4);
+          color: var(--muted);
           max-width: 300px;
           font-weight: 400;
         }
@@ -313,11 +312,11 @@ export default function ExperienceSection() {
           align-items: center;
           gap: 18px;
           padding: 22px 0;
-          border-bottom: 1px solid rgba(255,255,255,0.06);
+          border-bottom: 1px solid rgba(16,24,40,0.04);
           cursor: default;
           transition: padding-left 0.25s ease;
         }
-        .exp-row:first-child { border-top: 1px solid rgba(255,255,255,0.06); }
+        .exp-row:first-child { border-top: 1px solid rgba(16,24,40,0.04); }
 
         .exp-logo {
           width: 46px;
@@ -326,7 +325,7 @@ export default function ExperienceSection() {
           display: flex;
           align-items: center;
           justify-content: center;
-          font-family: 'Syne', sans-serif;
+          font-family: var(--font-display);
           font-size: 0.72rem;
           font-weight: 800;
           flex-shrink: 0;
@@ -340,7 +339,7 @@ export default function ExperienceSection() {
         .exp-role {
           font-size: 0.975rem;
           font-weight: 600;
-          color: #f0f0f0;
+          color: var(--fg);
           display: flex;
           align-items: center;
           gap: 8px;

@@ -107,7 +107,7 @@ function AnimatedHeading({ children, delay = 0, accent = false }) {
       transition={{ duration: 0.75, delay, ease: [0.16, 1, 0.3, 1] }}
       style={{
         display: "inline-block",
-        color: accent ? "#a3e635" : "#f0f0f0",
+        color: accent ? "var(--highlight)" : "var(--fg)",
         willChange: "transform",
       }}
     >
@@ -161,18 +161,16 @@ export default function HeroSection() {
   return (
     <>
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500;600&display=swap');
-
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
         .hero {
           position: relative;
           min-height: 100vh;
-          background: #0e0e10;
+          background: var(--bg);
           display: flex;
           align-items: center;
           overflow: hidden;
-          font-family: 'DM Sans', sans-serif;
+          font-family: var(--font-sans);
         }
 
         /* Subtle radial glow top-right */
@@ -237,7 +235,7 @@ export default function HeroSection() {
           left: 0;
           right: 0;
           height: 38%;
-          background: linear-gradient(to top, #0e0e10 0%, transparent 100%);
+          background: linear-gradient(to top, var(--bg) 0%, transparent 100%);
         }
 
         /* ── Text column ── */
@@ -254,7 +252,7 @@ export default function HeroSection() {
           font-weight: 600;
           letter-spacing: 0.18em;
           text-transform: uppercase;
-          color: rgba(255,255,255,0.4);
+          color: var(--muted);
         }
         .hero-eyebrow-dot {
           width: 6px;
@@ -269,12 +267,13 @@ export default function HeroSection() {
         }
 
         .hero-heading {
-          font-family: 'Syne', sans-serif;
+          font-family: var(--font-display);
           font-size: clamp(2.6rem, 4.5vw, 4rem);
           font-weight: 800;
           line-height: 1.1;
           letter-spacing: -0.03em;
           overflow: hidden;
+          color: var(--fg);
         }
         .hero-heading-line {
           overflow: hidden;
@@ -284,7 +283,7 @@ export default function HeroSection() {
         .hero-body {
           font-size: 0.975rem;
           line-height: 1.7;
-          color: rgba(255,255,255,0.45);
+          color: var(--muted);
           max-width: 420px;
           font-weight: 400;
         }
@@ -303,8 +302,8 @@ export default function HeroSection() {
           padding: 13px 28px;
           border-radius: 999px;
           border: 1.5px solid rgba(255,255,255,0.2);
-          background: transparent;
-          color: #f0f0f0;
+          background: var(--accent);
+          color: var(--fg);
           font-family: 'DM Sans', sans-serif;
           font-size: 0.9rem;
           font-weight: 600;
@@ -314,9 +313,9 @@ export default function HeroSection() {
           text-decoration: none;
         }
         .btn-resume:hover {
-          border-color: #a3e635;
+          border-color: var(--highlight);
           background: rgba(163,230,53,0.08);
-          color: #a3e635;
+          color: var(--highlight);
           box-shadow: 0 0 24px rgba(163,230,53,0.15);
         }
 
@@ -330,10 +329,10 @@ export default function HeroSection() {
           gap: 2px;
         }
         .stat-number {
-          font-family: 'Syne', sans-serif;
+          font-family: var(--font-display);
           font-size: 1.6rem;
           font-weight: 800;
-          color: #f0f0f0;
+          color: var(--fg);
           letter-spacing: -0.03em;
         }
         .stat-label {
@@ -440,7 +439,7 @@ export default function HeroSection() {
                 }}
               >
                 <span style={{ fontSize: "1rem" }}>✦</span>
-                <span style={{ color: "#f0f0f0", fontSize: "0.78rem", fontWeight: 600, whiteSpace: "nowrap", fontFamily: "'DM Sans', sans-serif" }}>
+                <span style={{ color: "var(--fg)", fontSize: "0.78rem", fontWeight: 600, whiteSpace: "nowrap", fontFamily: "var(--font-display)" }}>
                   Available for work
                 </span>
                 <span style={{ width: 7, height: 7, borderRadius: "50%", background: "#a3e635", flexShrink: 0, boxShadow: "0 0 8px #a3e635" }} />

@@ -79,24 +79,22 @@ export default function Footer() {
   return (
     <>
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500;600&display=swap');
-
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
         .footer-root {
-          background: #0e0e10;
+          background: var(--bg);
           padding: 60px 48px 48px;
-          font-family: 'DM Sans', sans-serif;
+          font-family: var(--font-sans);
           position: relative;
+          color: var(--fg);
         }
 
         /* ── CTA card ── */
         .footer-card {
-        //   max-width: 1000px;
           margin: 0 auto 52px;
           width: 80%;
-          background: #161618;
-          border: 1px solid rgba(255,255,255,0.08);
+          background: var(--accent);
+          border: 1px solid rgba(16,24,40,0.04);
           border-radius: 24px;
           padding: 72px 48px 80px;
           display: flex;
@@ -117,7 +115,8 @@ export default function Footer() {
           width: 60%;
           height: 240px;
           border-radius: 50%;
-          background: radial-gradient(circle, rgba(163,230,53,0.05) 0%, transparent 70%);
+          background: radial-gradient(circle, var(--highlight) 0%, transparent 70%);
+          opacity: 0.05;
           pointer-events: none;
         }
 
@@ -125,13 +124,13 @@ export default function Footer() {
           display: inline-flex;
           align-items: center;
           gap: 8px;
-          background: rgba(255,255,255,0.06);
-          border: 1px solid rgba(255,255,255,0.1);
+          background: rgba(16,24,40,0.04);
+          border: 1px solid rgba(16,24,40,0.04);
           border-radius: 999px;
           padding: 6px 16px;
           font-size: 0.78rem;
           font-weight: 500;
-          color: rgba(255,255,255,0.65);
+          color: var(--muted);
           margin-bottom: 28px;
           letter-spacing: 0.01em;
         }
@@ -139,7 +138,7 @@ export default function Footer() {
           width: 7px;
           height: 7px;
           border-radius: 50%;
-          background: #a3e635;
+          background: var(--highlight);
           box-shadow: 0 0 8px rgba(163,230,53,0.7);
           animation: blink 2s ease-in-out infinite;
         }
@@ -149,10 +148,10 @@ export default function Footer() {
         }
 
         .footer-cta-heading {
-          font-family: 'Syne', sans-serif;
+          font-family: var(--font-display);
           font-size: clamp(2.6rem, 6vw, 5rem);
           font-weight: 800;
-          color: #f0f0f0;
+          color: var(--fg);
           line-height: 1.1;
           letter-spacing: -0.035em;
           overflow: hidden;
@@ -169,10 +168,10 @@ export default function Footer() {
           gap: 10px;
           padding: 15px 38px;
           border-radius: 999px;
-          border: 1.5px solid rgba(255,255,255,0.22);
+          border: 1.5px solid rgba(16,24,40,0.04);
           background: transparent;
-          color: #f0f0f0;
-          font-family: 'DM Sans', sans-serif;
+          color: var(--fg);
+          font-family: var(--font-sans);
           font-size: 0.95rem;
           font-weight: 600;
           cursor: pointer;
@@ -183,9 +182,9 @@ export default function Footer() {
           z-index: 1;
         }
         .footer-cta-btn:hover {
-          border-color: #a3e635;
+          border-color: var(--highlight);
           background: rgba(163,230,53,0.08);
-          color: #a3e635;
+          color: var(--highlight);
           box-shadow: 0 0 32px rgba(163,230,53,0.18);
         }
 
@@ -201,7 +200,7 @@ export default function Footer() {
         }
         .footer-copy {
           font-size: 0.82rem;
-          color: rgba(255,255,255,0.3);
+          color: var(--muted);
           font-weight: 400;
         }
         .footer-socials {
@@ -216,16 +215,16 @@ export default function Footer() {
           width: 38px;
           height: 38px;
           border-radius: 10px;
-          border: 1px solid rgba(255,255,255,0.08);
+          border: 1px solid rgba(16,24,40,0.04);
           background: transparent;
-          color: rgba(255,255,255,0.4);
+          color: var(--muted);
           text-decoration: none;
           transition: color 0.2s, border-color 0.2s, background 0.2s;
         }
         .social-btn:hover {
-          color: #f0f0f0;
-          border-color: rgba(255,255,255,0.2);
-          background: rgba(255,255,255,0.05);
+          color: var(--fg);
+          border-color: rgba(16,24,40,0.04);
+          background: rgba(16,24,40,0.04);
         }
 
         /* ── Floating bot FAB ── */
@@ -237,14 +236,14 @@ export default function Footer() {
           width: 50px;
           height: 50px;
           border-radius: 50%;
-          background: #f0f0f0;
+          background: var(--accent);
           border: none;
           cursor: pointer;
           display: flex;
           align-items: center;
           justify-content: center;
           box-shadow: 0 4px 20px rgba(0,0,0,0.35);
-          color: #111;
+          color: var(--fg);
         }
 
         /* ── Responsive ── */

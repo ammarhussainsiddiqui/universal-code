@@ -11,6 +11,7 @@ import {
   useMotionValue,
   AnimatePresence,
 } from "framer-motion";
+import { useTheme } from "../context/ThemeContext";
 
 const NAV_LINKS = [
   { href: "/", label: "Home" },
@@ -20,7 +21,7 @@ const NAV_LINKS = [
 ];
 
 export default function Navbar() {
-  const [theme, setTheme] = useState("light");
+  const { theme, toggleTheme } = useTheme();
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
 
@@ -45,26 +46,7 @@ export default function Navbar() {
     return () => { document.body.style.overflow = ""; };
   }, [mobileOpen]);
 
-  useEffect(() => {
-    try {
-      const savedTheme = localStorage.getItem("theme");
-      if (savedTheme) {
-        setTheme(savedTheme);
-      } else if (
-        window.matchMedia &&
-        window.matchMedia("(prefers-color-scheme: dark)").matches
-      ) {
-        setTheme("dark");
-      }
-    } catch (e) {}
-  }, []);
-
-  useEffect(() => {
-    try {
-      document.documentElement.setAttribute("data-theme", theme);
-      localStorage.setItem("theme", theme);
-    } catch (e) {}
-  }, [theme]);
+  // Theme is now handled via ThemeContext (useTheme)
 
   const scrollYProgress = useMotionValue(0);
   const spring = useSpring(scrollYProgress, {
@@ -154,7 +136,7 @@ export default function Navbar() {
           color: var(--text-primary, #111);
           flex-shrink: 0;
         }
-        [data-theme="dark"] .logo { color: #f0f0f0; }
+        [data-theme="dark"] .logo { color: var(--fg); }
 
         .nav-link {
           font-size: 0.875rem;
@@ -171,7 +153,7 @@ export default function Navbar() {
         }
         [data-theme="dark"] .nav-link { color: #aaa; }
         [data-theme="dark"] .nav-link:hover {
-          color: #f0f0f0;
+          color: var(--fg);
           background: rgba(255,255,255,0.07);
         }
 
@@ -222,7 +204,7 @@ export default function Navbar() {
           background: var(--text-primary, #111);
           transform-origin: center;
         }
-        [data-theme="dark"] .hamburger-btn .bar { background: #f0f0f0; }
+        [data-theme="dark"] .hamburger-btn .bar { background: var(--fg); }
 
         /* ── Mobile drawer ────────────────────────────────────────────── */
         .mobile-drawer {
@@ -274,7 +256,7 @@ export default function Navbar() {
         .mobile-nav-link:hover {
           background: var(--hover-bg, rgba(0,0,0,0.05));
         }
-        [data-theme="dark"] .mobile-nav-link { color: #f0f0f0; }
+        [data-theme="dark"] .mobile-nav-link { color: var(--fg); }
         [data-theme="dark"] .mobile-nav-link:hover { background: rgba(255,255,255,0.07); }
 
         .mobile-drawer-footer {
@@ -369,9 +351,7 @@ export default function Navbar() {
                   className="theme-toggle"
                   aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
                   aria-pressed={theme === "dark"}
-                  onClick={() =>
-                    setTheme((prev) => (prev === "dark" ? "light" : "dark"))
-                  }
+                  onClick={() => toggleTheme()}
                 >
                   <span aria-hidden="true" className="nav-link">
                     {theme === "dark" ? "☾" : "☀"}

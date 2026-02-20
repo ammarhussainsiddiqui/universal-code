@@ -62,13 +62,13 @@ export default function CommunitySection() {
   return (
     <>
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500;600&display=swap');
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
         .community-root {
-          background: #0e0e10;
+          background: var(--bg);
           padding: 100px 48px;
-          font-family: 'DM Sans', sans-serif;
+          font-family: var(--font-sans);
+          color: var(--fg);
         }
 
         .community-inner {
@@ -88,8 +88,8 @@ export default function CommunitySection() {
         }
 
         .feat-card {
-          background: #141416;
-          border: 1px solid rgba(255,255,255,0.07);
+          background: var(--accent);
+          border: 1px solid rgba(16,24,40,0.04);
           border-radius: 18px;
           padding: 28px 22px 30px;
           display: flex;
@@ -97,32 +97,32 @@ export default function CommunitySection() {
           gap: 14px;
           cursor: default;
           will-change: transform;
-          transition: border-color 0.3s ease;
+          transition: border-color 0.3s ease, transform 0.22s var(--easing-smooth);
         }
-        .feat-card:hover { border-color: rgba(163,230,53,0.22); }
+        .feat-card:hover { border-color: rgba(163,230,53,0.18); }
 
         .feat-icon {
           width: 44px;
           height: 44px;
           border-radius: 12px;
-          background: rgba(255,255,255,0.05);
-          border: 1px solid rgba(255,255,255,0.08);
+          background: rgba(0,0,0,0.04);
+          border: 1px solid rgba(16,24,40,0.04);
           display: flex;
           align-items: center;
           justify-content: center;
-          color: #a3e635;
+          color: var(--highlight);
           flex-shrink: 0;
         }
         .feat-title {
-          font-family: 'Syne', sans-serif;
+          font-family: var(--font-display);
           font-size: 1rem;
           font-weight: 700;
-          color: #f0f0f0;
+          color: var(--fg);
           letter-spacing: -0.01em;
         }
         .feat-desc {
           font-size: 0.845rem;
-          color: rgba(255,255,255,0.4);
+          color: var(--muted);
           line-height: 1.72;
           font-weight: 400;
         }
@@ -142,23 +142,23 @@ export default function CommunitySection() {
           font-weight: 700;
           letter-spacing: 0.18em;
           text-transform: uppercase;
-          color: rgba(255,255,255,0.45);
-          font-family: 'DM Sans', sans-serif;
+          color: var(--muted);
+          font-family: var(--font-sans);
         }
-        .comm-eyebrow .accent { color: #a3e635; }
+        .comm-eyebrow .accent { color: var(--highlight); }
 
         .comm-heading {
-          font-family: 'Syne', sans-serif;
+          font-family: var(--font-display);
           font-size: clamp(2.4rem, 4vw, 3.6rem);
           font-weight: 800;
-          color: #f0f0f0;
+          color: var(--fg);
           line-height: 1.1;
           letter-spacing: -0.035em;
         }
 
         .comm-body {
           font-size: 0.9rem;
-          color: rgba(255,255,255,0.42);
+          color: var(--muted);
           line-height: 1.78;
           max-width: 520px;
         }
@@ -171,17 +171,17 @@ export default function CommunitySection() {
           flex-wrap: wrap;
         }
         .stat-val {
-          font-family: 'Syne', sans-serif;
+          font-family: var(--font-display);
           font-size: clamp(2.4rem, 4vw, 3.2rem);
           font-weight: 800;
-          color: #f0f0f0;
+          color: var(--fg);
           letter-spacing: -0.04em;
           line-height: 1;
           display: block;
         }
         .stat-lbl {
           font-size: 0.8rem;
-          color: rgba(255,255,255,0.35);
+          color: var(--muted);
           font-weight: 500;
           display: block;
           margin-top: 5px;
@@ -194,9 +194,9 @@ export default function CommunitySection() {
           padding: 14px 32px;
           border-radius: 999px;
           border: none;
-          background: #f0f0f0;
-          color: #0e0e10;
-          font-family: 'DM Sans', sans-serif;
+          background: var(--accent);
+          color: var(--fg);
+          font-family: var(--font-sans);
           font-size: 0.9rem;
           font-weight: 700;
           cursor: pointer;
@@ -205,8 +205,8 @@ export default function CommunitySection() {
           transition: background 0.22s, box-shadow 0.22s;
         }
         .comm-btn:hover {
-          background: #fff;
-          box-shadow: 0 0 28px rgba(255,255,255,0.15);
+          background: color-mix(in srgb, var(--accent) 88%, #fff 12%);
+          box-shadow: 0 8px 30px rgba(16,24,40,0.06);
         }
 
         /* ── Responsive ── */
