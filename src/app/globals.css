@@ -1,4 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 /* ════════════════════════════════════════════════════════════════════
    DESIGN TOKENS & THEME VARIABLES
@@ -32,10 +34,12 @@
   --type-bg-opacity: 0.04;
   --type-bg-size: clamp(160px, 22vw, 420px);
   
+  
   /* Grid Background */
   --grid-spacing: 80px;
   --grid-line-color: rgba(11, 11, 11, 0.06);
   --grid-opacity: 0.06;
+  
 }
 
 /* Dark Mode Override */
@@ -45,6 +49,13 @@ html[data-theme='dark'] {
   --muted: #999;
   --accent: #111;
   
+ 
+  /* Grid Background */
+  --grid-spacing: 80px;
+  --grid-line-color: rgba(11, 11, 11, 0.06);
+  --grid-opacity: 0.06;
+    --grid-line: rgba(255, 255, 255, 0.045);
+  --grid-line-strong: rgba(255, 255, 255, 0.07);
   /* Dark mode grid colors */
   --grid-line-color: rgba(255, 255, 255, 0.05);
 }
