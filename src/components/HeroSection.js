@@ -160,160 +160,185 @@ function NoiseOverlay() {
 export default function HeroSection() {
   return (
     <>
-      <section className="hero">
-        <NoiseOverlay />
+     <section className="relative overflow-hidden bg-[#0c0c0f] text-white">
 
-        <div className="hero-inner">
-          {/* ── Left: Photo ── */}
-          <motion.div
-            className="hero-image-col"
-            initial={{ opacity: 0, x: -48 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
-          >
-            <div className="hero-img-wrapper">
-              <div className="hero-img-bg">
-                {/* Replace src with your actual image path */}
-                <img
-                  src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&q=85"
-                  alt="Developer portrait"
-                />
-              </div>
+  {/* Subtle Grid Background */}
+  <div
+    className="
+      pointer-events-none absolute inset-0 z-0
+      bg-[linear-gradient(to_right,rgba(255,255,255,0.03)_1px,transparent_1px),
+           linear-gradient(to_bottom,rgba(255,255,255,0.03)_1px,transparent_1px)]
+      bg-[size:80px_80px]
+    "
+  />
 
-              {/* Rotating badge */}
-              <RotatingBadge text="LETS TALK • LETS TALK • LETS TALK • " radius={50} />
+  <NoiseOverlay />
 
-              {/* Floating accent chip */}
-              <motion.div
-                initial={{ opacity: 0, y: 16 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 1.1, duration: 0.6, ease: "easeOut" }}
-                style={{
-                  position: "absolute",
-                  top: "14%",
-                  right: "-30px",
-                  background: "rgba(20,20,22,0.9)",
-                  border: "1px solid rgba(255,255,255,0.1)",
-                  borderRadius: "12px",
-                  padding: "8px 14px",
-                  display: "flex",
-                  alignItems: "center",
-                  gap: "8px",
-                  backdropFilter: "blur(12px)",
-                }}
-              >
-                <span style={{ fontSize: "1rem" }}>✦</span>
-                <span style={{ color: "var(--fg)", fontSize: "0.78rem", fontWeight: 600, whiteSpace: "nowrap", fontFamily: "var(--font-display)" }}>
-                  Available for work
-                </span>
-                <span style={{ width: 7, height: 7, borderRadius: "50%", background: "#a3e635", flexShrink: 0, boxShadow: "0 0 8px #a3e635" }} />
-              </motion.div>
+  {/* Container */}
+  <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-12">
+
+    <div className="min-h-screen flex items-center py-24">
+
+      {/* Grid Layout */}
+      <div className="grid lg:grid-cols-2 gap-16 items-center w-full">
+
+        {/* ───────────────────────────── */}
+        {/* Left Side – Image */}
+        {/* ───────────────────────────── */}
+
+        <motion.div
+          initial={{ opacity: 0, x: -40 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.9 }}
+          className="relative flex justify-center lg:justify-start"
+        >
+          <div className="relative w-[280px] sm:w-[340px] lg:w-[420px]">
+
+            {/* Image */}
+            <div className="rounded-3xl overflow-hidden border border-white/10 bg-white/5 backdrop-blur-xl">
+              <img
+                src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&q=85"
+                alt="Developer portrait"
+                className="w-full h-full object-cover"
+              />
             </div>
+
+            {/* Rotating Badge */}
+            <div className="absolute -bottom-10 -right-10">
+              <RotatingBadge
+                text="LETS TALK • LETS TALK • LETS TALK • "
+                radius={55}
+              />
+            </div>
+
+            {/* Floating Status Chip */}
+            <motion.div
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 1 }}
+              className="
+                absolute top-6 -right-8
+                bg-[#141416]/90
+                border border-white/10
+                rounded-xl
+                px-4 py-2
+                flex items-center gap-2
+                backdrop-blur-xl
+              "
+            >
+              <span>✦</span>
+              <span className="text-xs font-semibold whitespace-nowrap">
+                Available for work
+              </span>
+              <span className="w-2 h-2 rounded-full bg-lime-400 shadow-[0_0_8px_#a3e635]" />
+            </motion.div>
+
+          </div>
+        </motion.div>
+
+
+        {/* ───────────────────────────── */}
+        {/* Right Side – Content */}
+        {/* ───────────────────────────── */}
+
+        <div className="space-y-8">
+
+          {/* Eyebrow */}
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3 }}
+            className="flex items-center gap-3 text-sm text-white/60"
+          >
+            <span className="w-2 h-2 rounded-full bg-yellow-400" />
+            Creative developer & designer
           </motion.div>
 
-          {/* ── Right: Text ── */}
-          <div className="hero-text-col">
-            {/* Eyebrow */}
-            <motion.div
-              className="hero-eyebrow"
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.3 }}
+          {/* Heading */}
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-semibold leading-tight tracking-tight">
+            <span className="block">
+              <AnimatedHeading delay={0.4}>A</AnimatedHeading>{" "}
+              <AnimatedHeading delay={0.5} accent>
+                creative developer
+              </AnimatedHeading>
+            </span>
+            <span className="block mt-2">
+              <AnimatedHeading delay={0.6}>
+                & digital designer
+              </AnimatedHeading>
+            </span>
+          </h1>
+
+          {/* Paragraph */}
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.8 }}
+            className="text-white/60 max-w-lg leading-relaxed"
+          >
+            I collaborate with brands globally to design impactful,
+            mission-focused websites that drive results and achieve
+            business goals.
+          </motion.p>
+
+          {/* Buttons */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.9 }}
+            className="flex items-center gap-6"
+          >
+            <motion.a
+              href="#"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="
+                bg-white text-black
+                px-6 py-3
+                rounded-full
+                text-sm font-semibold
+                flex items-center gap-2
+                hover:bg-yellow-400
+                transition
+              "
             >
-              <span className="hero-eyebrow-dot" />
-              Creative developer & designer
-            </motion.div>
+              My Resume
+            </motion.a>
 
-            {/* Heading */}
-            <h1 className="hero-heading">
-              <span className="hero-heading-line">
-                <AnimatedHeading delay={0.4}>A </AnimatedHeading>
-                <AnimatedHeading delay={0.5} accent>creative developer</AnimatedHeading>
-              </span>
-              <span className="hero-heading-line" style={{ marginTop: "4px" }}>
-                <AnimatedHeading delay={0.62}>&amp; digital designer</AnimatedHeading>
-              </span>
-            </h1>
-
-            {/* Body copy */}
-            <motion.p
-              className="hero-body"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.78, ease: "easeOut" }}
+            <a
+              href="#projects"
+              className="text-sm text-white/50 hover:text-white transition"
             >
-              I collaborate with brands globally to design impactful, mission-focused
-              websites that drive results and achieve business goals.
-            </motion.p>
+              View Work →
+            </a>
+          </motion.div>
 
-            {/* CTA */}
-            <motion.div
-              className="hero-actions"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.92, ease: "easeOut" }}
-            >
-              <motion.a
-                href="#"
-                className="btn-resume"
-                whileHover={{ scale: 1.04 }}
-                whileTap={{ scale: 0.97 }}
-              >
-                My Resume
-                <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-                  <path d="M2 12L12 2M12 2H4M12 2V10" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-              </motion.a>
+          {/* Stats */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 1 }}
+            className="flex gap-10 pt-6"
+          >
+            {[
+              { n: "3+", label: "Years Exp." },
+              { n: "40+", label: "Projects" },
+              { n: "20+", label: "Clients" },
+            ].map((item) => (
+              <div key={item.label}>
+                <div className="text-2xl font-semibold">{item.n}</div>
+                <div className="text-sm text-white/50">{item.label}</div>
+              </div>
+            ))}
+          </motion.div>
 
-              <motion.a
-                href="#projects"
-                style={{
-                  fontSize: "0.875rem",
-                  color: "rgba(255,255,255,0.4)",
-                  textDecoration: "none",
-                  fontWeight: 500,
-                  fontFamily: "'DM Sans', sans-serif",
-                  display: "flex",
-                  alignItems: "center",
-                  gap: 6,
-                  transition: "color 0.2s",
-                }}
-                whileHover={{ color: "rgba(255,255,255,0.85)" }}
-              >
-                View Work
-                <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-                  <path d="M2 6h8M7 3l3 3-3 3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-              </motion.a>
-            </motion.div>
-
-            {/* Stats */}
-            <motion.div
-              className="hero-stats"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 1.08, ease: "easeOut" }}
-            >
-              {[
-                { n: "3+", label: "Years Exp." },
-                { n: "40+", label: "Projects" },
-                { n: "20+", label: "Clients" },
-              ].map(({ n, label }) => (
-                <div key={label} className="stat">
-                  <span className="stat-number">{n}</span>
-                  <span className="stat-label">{label}</span>
-                </div>
-              ))}
-            </motion.div>
-          </div>
         </div>
 
-        {/* Scroll indicator */}
-        <div className="scroll-hint">
-          <span>scroll</span>
-          <div className="scroll-line" />
-        </div>
-      </section>
+      </div>
+    </div>
+  </div>
+
+</section>
     </>
   );
 }

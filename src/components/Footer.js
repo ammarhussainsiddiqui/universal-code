@@ -128,7 +128,7 @@ export default function Footer() {
 
         {/* ── Bottom bar ─────────────────────────────────────── */}
         <motion.div
-          className="footer-bottom"
+          className="footer-bottom "
           initial={{ opacity: 0 }}
           animate={inView ? { opacity: 1 } : {}}
           transition={{ duration: 0.6, delay: 1 }}
@@ -155,7 +155,7 @@ export default function Footer() {
       </footer>
 
       {/* ── Floating Bot FAB ───────────────────────────────────── */}
-      <motion.button
+      {/* <motion.button
         className="footer-fab"
         aria-label="Chat with bot"
         initial={{ scale: 0, opacity: 0 }}
@@ -164,7 +164,7 @@ export default function Footer() {
         whileHover={{ scale: 1.1, boxShadow: "0 6px 28px rgba(0,0,0,0.45)" }}
         whileTap={{ scale: 0.93 }}
       >
-        {/* bot / chat icon */}
+     
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
           <rect x="3" y="11" width="18" height="11" rx="2"/>
           <path d="M12 2a3 3 0 0 1 3 3v6H9V5a3 3 0 0 1 3-3z"/>
@@ -173,7 +173,7 @@ export default function Footer() {
           <path d="M8 11V7"/>
           <path d="M16 11V7"/>
         </svg>
-      </motion.button>
+      </motion.button> */}
     </>
   );
 }

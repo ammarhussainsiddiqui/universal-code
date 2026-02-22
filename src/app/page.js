@@ -88,7 +88,7 @@ function FadeUp({ children, delay = 0, className = "", style = {} }) {
 function Hero() {
   return (
     <section className="hero-section">
-      <div className="container" style={{ paddingTop:160, paddingBottom:100 }}>
+      <div className="container" style={{ paddingBottom:100 }}>
         <motion.div initial={{opacity:0,y:10}} animate={{opacity:1,y:0}} transition={{duration:0.5}} style={{ display:"flex",alignItems:"center",gap:8,marginBottom:24,fontSize:"0.85rem",color:"var(--muted)",fontFamily:"var(--font-sans)" }}>
           <span>👋</span> Hey! It's me Devraj,
         </motion.div>
@@ -135,7 +135,7 @@ function Hero() {
 function MarqueeStrip() {
   const doubled = [...MARQUEE_ITEMS,...MARQUEE_ITEMS,...MARQUEE_ITEMS];
   return (
-    <div style={{ overflow:"hidden", borderTop:"1px solid rgba(0,0,0,0.06)", borderBottom:"1px solid rgba(0,0,0,0.06)", padding:"20px 0", background:"var(--bg)", position:"relative" }}>
+    <div style={{ overflow:"hidden", borderTop:"1px solid rgba(0,0,0,0.06)", borderBottom:"1px solid rgba(0,0,0,0.06)", padding:"20px 0", position:"relative" }}>
       <div style={{ position:"absolute",left:0,top:0,bottom:0,width:80,background:"linear-gradient(to right,var(--bg),transparent)",zIndex:2,pointerEvents:"none" }}/>
       <div style={{ position:"absolute",right:0,top:0,bottom:0,width:80,background:"linear-gradient(to left,var(--bg),transparent)",zIndex:2,pointerEvents:"none" }}/>
       <motion.div animate={{x:["0%","-33.33%"]}} transition={{duration:20,repeat:Infinity,ease:"linear"}}
@@ -160,7 +160,7 @@ function AboutBlurb() {
   const text = "I'm Devraj Chatribin, with over 5+ years of experience in design & development with strong focus on producing high quality & impactful digital experiences. I have worked with some of the most innovative industry leaders to help build their top-notch products.";
   const words = text.split(" ");
   return (
-    <section ref={ref} style={{ background:"var(--bg)", padding:"120px 48px" }}>
+    <section ref={ref} style={{  padding:"120px 48px" }}>
       <div className="container" style={{ maxWidth:800, margin:"0 auto", textAlign:"center" }}>
         <motion.div initial={{opacity:0,y:12}} animate={inView?{opacity:1,y:0}:{}} transition={{duration:0.5}}>
           <Eyebrow center>About Me</Eyebrow>
@@ -185,7 +185,7 @@ function AboutBlurb() {
 ═══════════════════════════════════════════════════════════════ */
 function Projects() {
   return (
-    <section style={{ background:"var(--bg)", padding:"0 48px 100px" }}>
+    <section style={{ padding:"0 48px 100px" }}>
       <div className="container">
         <FadeUp>
           <Eyebrow>My Work</Eyebrow>
@@ -233,7 +233,7 @@ function Expertise() {
   const active = EXPERTISE.find(e=>e.id===open);
 
   return (
-    <section style={{ background:"var(--bg)", padding:"100px 48px" }}>
+    <section style={{ padding:"100px 48px" }}>
       <div className="container">
         <FadeUp>
           <Eyebrow>Speciality</Eyebrow>
@@ -299,7 +299,7 @@ function Testimonials() {
   const t = TESTIMONIALS[idx];
 
   return (
-    <section style={{ background:"var(--bg)", padding:"100px 48px", borderTop:"1px solid rgba(0,0,0,0.06)" }}>
+    <section style={{ padding:"100px 48px", borderTop:"1px solid rgba(0,0,0,0.06)" }}>
       <div className="container">
         <div className="testimonials-grid">
           {/* Left */}

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
 
 /* ════════════════════════════════════════════════════════════════════
    DESIGN TOKENS & THEME VARIABLES
@@ -6,8 +6,8 @@
 
 :root {
   /* Typography */
-  --font-display: 'Poppins', sans-serif;
-  --font-sans: 'Poppins', sans-serif;
+  --font-display: 'Raleway', sans-serif;
+  --font-sans: 'Raleway', sans-serif;
   
   /* Light Mode Colors */
   --bg: #F6F7F8;
@@ -28,9 +28,14 @@
   --header-height: 92px;
   
   /* Background Text */
-  --type-bg-text: "WORK";
+  --type-bg-text: "AMMAR";
   --type-bg-opacity: 0.04;
   --type-bg-size: clamp(160px, 22vw, 420px);
+  
+  /* Grid Background */
+  --grid-spacing: 80px;
+  --grid-line-color: rgba(11, 11, 11, 0.06);
+  --grid-opacity: 0.06;
 }
 
 /* Dark Mode Override */
@@ -39,6 +44,9 @@ html[data-theme='dark'] {
   --fg: #ECECEC;
   --muted: #999;
   --accent: #111;
+  
+  /* Dark mode grid colors */
+  --grid-line-color: rgba(255, 255, 255, 0.05);
 }
 
 /* ════════════════════════════════════════════════════════════════════
@@ -59,24 +67,61 @@ html, body, #root {
 html {
   scroll-behavior: smooth;
   font-size: 16px;
+  position: relative;
+}
+
+/* Fixed grid background overlay */
+html::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100vh;
+  background-image: 
+    /* Vertical lines */
+    repeating-linear-gradient(
+      90deg,
+      var(--grid-line-color) 0px,
+      var(--grid-line-color) 1px,
+      transparent 1px,
+      transparent var(--grid-spacing)
+    ),
+    /* Horizontal lines */
+    repeating-linear-gradient(
+      0deg,
+      var(--grid-line-color) 0px,
+      var(--grid-line-color) 1px,
+      transparent 1px,
+      transparent var(--grid-spacing)
+    );
+  background-size: var(--grid-spacing) var(--grid-spacing);
+  pointer-events: none;
+  z-index: 0;
 }
 
 body {
   margin: 0;
   font-family: var(--font-sans);
-  background: var(--bg);
+  background-color: var(--bg);
   color: var(--fg);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-touch-callout: none;
   -webkit-tap-highlight-color: transparent;
   overflow-x: hidden;
-  transition: background var(--transition-medium) var(--easing-smooth), 
+  position: relative;
+  z-index: 1;
+  transition: background-color var(--transition-medium) var(--easing-smooth), 
               color var(--transition-medium) var(--easing-smooth);
 }
 
 main {
   padding-top: var(--header-height);
+  position: relative;
+  z-index: 1;
 }
 
 section {
@@ -572,7 +617,6 @@ html[data-theme='dark'] .mobile-overlay {
    ════════════════════════════════════════════════════════════════════ */
 
 .community-root {
-  background: var(--bg);
   padding: 100px 48px;
   font-family: var(--font-sans);
   color: var(--fg);
@@ -729,7 +773,7 @@ html[data-theme='dark'] .mobile-overlay {
    ════════════════════════════════════════════════════════════════════ */
 
 .marquee-section {
-  background: var(--bg);
+  /* background: var(--bg); */
   padding: 0;
   overflow: hidden;
   border-top: 1px solid rgba(16, 24, 40, 0.04);
@@ -808,7 +852,7 @@ html[data-theme='dark'] .mobile-overlay {
 }
 
 .experience-section {
-  background: var(--bg);
+  /* background: var(--bg); */
   padding: 100px 48px 120px;
   font-family: var(--font-sans);
   position: relative;
@@ -967,7 +1011,6 @@ html[data-theme='dark'] .mobile-overlay {
    ════════════════════════════════════════════════════════════════════ */
 
 .section-root {
-  background: var(--bg);
   font-family: var(--font-sans);
   color: var(--fg);
 }
@@ -1142,7 +1185,6 @@ html[data-theme='dark'] .mobile-overlay {
    ════════════════════════════════════════════════════════════════════ */
 
 .footer-root {
-  background: var(--bg);
   padding: 60px 48px 48px;
   font-family: var(--font-sans);
   position: relative;
@@ -1296,7 +1338,6 @@ html[data-theme='dark'] .mobile-overlay {
    ════════════════════════════════════════════════════════════════════ */
 
 .contact-root {
-  background: var(--bg);
   min-height: 100vh;
   font-family: var(--font-sans);
   padding-top: 110px;
@@ -1809,7 +1850,6 @@ html[data-theme='dark'] .mobile-overlay {
    ════════════════════════════════════════════════════════════════════ */
 
 .projects-root {
-  background: var(--bg);
   min-height: 100vh;
   font-family: var(--font-sans);
   padding: 110px 48px 120px;
@@ -2317,6 +2357,7 @@ html {
   flex-direction: column;
   align-items: center;
   text-align: center;
+  margin-bottom: 10px;
   position: relative;
   overflow: hidden;
 }
